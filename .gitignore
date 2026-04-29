@@ -1,0 +1,8 @@
+venv/
+.venv/
+Output/*
+Input/*
+Error/*
+Traueranzeigen/*
+*.csv
+*.xlsx

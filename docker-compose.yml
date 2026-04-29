@@ -1,0 +1,18 @@
+services:
+  # Ollama Model Server
+  ollama:
+    #image: ollama/ollama:latest
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+       - "11434:11434"
+    volumes:
+       - ollama_data:/root/.ollama
+    environment:
+       - OLLAMA_HOST=0.0.0.0:11434
+       - OLLAMA_KEEP_ALIVE=5
+       - OLLAMA_MAX_LOADED_MODELS=2
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
