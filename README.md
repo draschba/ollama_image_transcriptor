@@ -1,3 +1,4 @@
-# Ollama image Transcription
+# Ollama Image Transcriptior
 
-description to come soon :-D
+description to come soon :grien:
+

@@ -1,4 +1,5 @@
-Version 1: Gemini
+## Version 1: Gemini
+
 Erstelle Python Programm mit folgender Funktionalität:
 Im Projketordner git es drei Verzeichnisse: Input, Output und Error. 
 In dem Iportordner liegen mehrere Bilddateien.  
@@ -14,7 +15,8 @@ Notiere die Informationen in einer Datei Ergebnis.csv tabellarisch im Projektord
 
 
 
-Version 2:  (qwen3.5:14b)
+## Version 2:  (qwen3.5:14b)
+
 Erstelle ein Python Programm mit folgender Funktionalität:  
 Im Projketordner git es drei Verzeichnisse: Input, Output und Error.  
 In dem Importordner liegen mehrere Bilddateien.  
@@ -29,7 +31,8 @@ Im Faller eines Fehlers wird das Bild in den Error verschobeen und die Fehlermel
 Notiere die Informationen in einer Datei Ergebnis.csv tabellarisch im Projektordner.
 
 
-Version 3: Copilot
+## Version 3: Copilot
+
 Erstelle ein Python Programm mit folgender Funktionalität:  
 Im Projketordner git es drei Verzeichnisse: Input, Output und Error.  
 In dem Importordner liegen mehrere Bilddateien.  
