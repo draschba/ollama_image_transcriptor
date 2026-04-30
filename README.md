@@ -6,7 +6,7 @@ Dieses Projekt wurde entwickelt, um eine große Menge an Sterbeanzeigen aus Zeit
 
 Das Programm selbst wurde mit Hilfe von verschiedenen KI-Chatbots entwickelt und anschließend im Detail manuell minimal angepasst. Den Prompt für die Programmgenerierung findet man unter [generate_program.md](prompts/generate_program.md).
 
-## Es erfüllt dabei folgende Grundfunktionen:
+#### Es erfüllt dabei folgende Grundfunktionen:
 
 1. Der Ordner **Input** wird nach Bilddateien im jpg- oder png-Format durchsucht.
 2. Für jedes Bild wird ein REST-API-Post-Request als Payload zusammengestellt. Die Bilddaten werden dafür base64-encoded.
@@ -17,7 +17,7 @@ Das Programm selbst wurde mit Hilfe von verschiedenen KI-Chatbots entwickelt und
 7. Der Status sowie die Dauer der Verarbeitung des Bildes wird zusätzlich in einer CSV-Datei im Projektordner erfasst.
 
 
-## Voraussetzungen
+## 1. Voraussetzungen für das Python Programm
 
 Das Programm wurde unter Ubuntu Linux 22.04 LTS entwickelt. Man benötigt eine aktuelle Python Umgebung mit **pip** und virtuellem Environment **venv**. Diese kann mit
 
@@ -27,7 +27,7 @@ sudo apt install python3-pip python3-venv
 
 nachinstallieren sofern sie noch nicht vorhanden ist.
 
-### Aktivieren der virtuellen Python Umgebung
+### Installation und Aktivierung der virtuellen Python Umgebung
 
 Es gehört zur guten handwerklichen Praxis ein virtuelles Environment für Python anzulegen. Dort hinein werden die zusätzlich erforderlichen Python Pakate für das Projekt installiert. 
 
@@ -37,5 +37,42 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+Damit ist das Python Programm einsatzbereit und kann mit 
+```bash
+python3 transcriptor.py
+```
+gestartet werden. Diese Schritte können jederzeit auch auf Windows oder Mac Systemen vollzogen werden. Entsprechende Anleitungen finden sich im Internet. Der Transkriptor benötigt selbst keine Softwareabhängigkeiten zu einer KI-Installation, das er nur die Rest-Request an die KI-Umgebung weiterleitet. 
 
+Standardmäßig verbindet er sich jedoch mit einem lokal laufendne Ollama System unter http://localhost:11434. 
+Man kann über die Umgebungsvariable 'OLLAMA_SERVER' jederzeit einen externen ollama Server einbinden. Zum Beispiel:
+```bash
+export OLLAMA_SERVER="http://mein-ki-server.somewhere.com:11434"
+```
+
+### Einrichten und Start des Ollama KI-Servers
+
+Es gibt verschiedene Methoden einen Ollama Server lokal oder auf einem dedizierten Rechner zu installieren und zu starten. Die Umgebung sollte jedoch auf eine KI-fähige GPU mit 16GB VRAM zugreifen können. Verschiedene Methoden und Alternativen findet sich in der Dokumentation auf der [Ollama Homepage](https://docs.ollama.com/).
+
+Ich verwnede einen lokalen Ollama Server in einem Docker-Container. Die Docker Host Umgebung wurde mit einer NVIDIA Umgebung für den Betrieb mit einer NVIDIA RTX4080 Grafikkarte konvektioniert. Ist diese Umgebung fehlerfrei eingerichtet kann der Ollama Serve rlokal einfach über die [docker-compose.yml](docker-compose.yml) Datei gestartet werden:
+
+* Laden des Docker Images: 
+  ```bash 
+  sudo docker compose pull
+  ```
+* Start des Containers: 
+  ```bash
+  sudo docker compose up -d
+  ```
+
+### KI Model ministral-3:154b 
+
+Der Transkriptor verwendet das Modell [ministral-3:14b](https://ollama.com/library/ministral-3) um die Bilddateien zu transkribieren. Dieses Modell kann jederzeit im Quellcode gegen ein anderes ausgetauscht werden. Das KI-Modell muss allerdings auf den Ollama-Server geladen werden. Hierfü liegt im Projektordner ein [Shell-Script](ollama.sh) bereit:
+
+```bash
+./ollama.sh pull ministral-3:14b
+```
+die verfügbaren Modelle kann man jederzeit anziegen lassen:
+```bash
+./ollama.sh list
+```
 

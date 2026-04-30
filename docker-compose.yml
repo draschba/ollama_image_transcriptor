@@ -1,7 +1,6 @@
 services:
   # Ollama Model Server
   ollama:
-    #image: ollama/ollama:latest
     image: ollama/ollama:latest
     container_name: ollama
     ports:
@@ -14,5 +13,12 @@ services:
        - OLLAMA_MAX_LOADED_MODELS=2
     restart: unless-stopped
 
+    # NVIDIA GPU-Support. disbale by commenting out
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
 volumes:
   ollama_data:
