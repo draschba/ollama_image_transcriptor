@@ -98,8 +98,9 @@ Solche Modelle wären auch aus den Serien
 * [gemma4](https://ollama.com/library/gemma4)
 * ... und alle neueren Vision-Modelle
 
-einsetzbar. Je größer die Modelle sind umso bessere Ergebnisse sind zu erwarten. Sie sollten nur zur verfübaren GPU-Kapazität der KI-Hardware / Grafikkarte passen. 
-Die Transkriptionsqualität ist extrem stark abhängig from Prompt udn dem eingesetzten KI-Modell. Beide müssen fein aufeinander abgestimmt werden.
+einsetzbar. Je größer die Modelle sind umso bessere Ergebnisse sind zu erwarten. Sie sollten nur zur verfügbaren GPU-Kapazität der KI-Hardware / Grafikkarte passen. 
+
+Die Transkriptionsqualität ist extrem stark abhängig vom Prompt und dem eingesetzten KI-Modell und natürlich der Bildqualität. Alle Bedingungen müssen fein aufeinander abgestimmt werden. Zu große Bilddateien werden allerdings das mögliche Kontextfenster überschreiten. Der Text im Bild sollte für das Modell gut lesbar sein. Moderne Schirften werden besser erkannt als sehr alte. Handschriften wurden bisher gar nicht berücksichtigt oder getestet.
 
 
 
