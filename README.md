@@ -66,7 +66,7 @@ Ich verwnede einen lokalen Ollama Server in einem Docker-Container. Die Docker-H
 
 ### KI-Modell *'ministral-3:14b'* laden und testen:
 
-Der Transkriptor verwendet das Modell [ministral-3:14b](https://ollama.com/library/ministral-3) um die Bilddateien zu transkribieren und di eDaten zu generieren. Dieses Modell kann jederzeit im Quellcode gegen ein anderes ausgetauscht werden. Das zu verwendende KI-Modell muss allerdings auf den Ollama-Server geladen werden. Hierfür liegt im Projektordner ein [Shell-Script](ollama.sh) bereit:
+Der Transkriptor verwendet das Modell [ministral-3:14b](https://ollama.com/library/ministral-3) um die Bilddateien zu transkribieren und die Daten zu generieren. Dieses Modell kann jederzeit im Quellcode gegen ein anderes ausgetauscht werden. Das zu verwendende KI-Modell muss allerdings auf den Ollama-Server geladen werden. Hierfür liegt im Projektordner ein [Shell-Script](ollama.sh) bereit:
 
 ```bash
 ./ollama.sh pull ministral-3:14b
@@ -76,7 +76,7 @@ die verfügbaren KI-Modelle des Ollama-Servers kann man jederzeit anzeigen lasse
 ./ollama.sh list
 ```
 
-Ob der Ollama Server fehlerfrei läuft und auf die Rest-API regiert kann mit einer einfachen KI-chat anfrage getestet werden:
+Ob der Ollama Server fehlerfrei läuft und auf die Rest-API regiert kann mit einer einfachen Chatanfrage getestet werden:
 
 ```bash
 curl http://localhost:11434/api/generate -d '{
@@ -85,3 +85,19 @@ curl http://localhost:11434/api/generate -d '{
   "stream": false
 }'
 ```
+
+Statt **ministra-3:14b** können auch andere Modelle verwendet werden. Eine Auswahl möglicher Modelle ist im [Ollama Repository](https://ollama.com/search) einsehbar. Für die Transkriptionsaufgabe sollten die Modelle jedoch idealerweise
+
+* einen Kontext von **256k** Token verarbeiten können
+* und **visionfähig** sein.
+
+Solche Modelle wäre zum Beispiel auch aus den Serien
+* [qwen-3.5](https://ollama.com/library/qwen3.5)
+* [qwen-3.6](https://ollama.com/library/qwen3.6)
+* [qwen-3-vl](https://ollama.com/library/qwen3-vl)
+* [gemma4](https://ollama.com/library/gemma4)
+* ... und alle neueren Vision-Modelle
+
+einsetzbar. Je größer die Modelle sind umso bessere Ergebnisse sind zu erwarten. Si esollten nur zur verfübaren GPU-Kapazität der KI-Hardware / Grafikkarte passen.
+
+
