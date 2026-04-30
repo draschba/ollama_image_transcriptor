@@ -103,5 +103,40 @@ einsetzbar. Je größer die Modelle sind umso bessere Ergebnisse sind zu erwarte
 Die Transkriptionsqualität ist extrem stark abhängig vom Prompt und dem eingesetzten KI-Modell und natürlich der Bildqualität. Alle Bedingungen müssen fein aufeinander abgestimmt werden. Zu große Bilddateien werden allerdings das mögliche Kontextfenster überschreiten. Der Text im Bild sollte für das Modell gut lesbar sein. Moderne Schirften werden besser erkannt als sehr alte. Handschriften wurden bisher gar nicht berücksichtigt oder getestet.
 
 
+## Beispiel für einee Transkription:
 
+die Traueranzeige
+
+![bild](Input/draschba_0001.jpg) 
+
+ wird trotz sehr mangelhafter Bildqualität wie folgt transkribiert. Bemerkenswert ist dabei, dass das Sterbedatum konkret aus dem Text interpretiert wird.
+
+````json
+{
+  "Volltext": "Wenn Liebe könnte Wunder tun und Tränen Töte wecken, Dann würde Dich in fremdem Land die kühle Erd' nicht decken. Am 27. April im Alter von 34 Jahren in tiefer Trauer: Kanonier Ludwig Draschba. In tiefer Trauer: Frau Auguste Draschba und Kinder.",
+
+  "Vorname": "Ludwig",
+  "Nachname": "Draschba",
+  "Geburtsname": "",
+
+  "Geburtsdatum": "",
+  "Geburtsort": "",
+
+  "Sterbedatum": "27. April 1918",
+  "Sterbeort": "westlicher Kriegsschauplatz",
+
+  "Trauernde": [
+    "Frau Auguste Draschba",
+    "Kinder"
+  ],
+
+  "Beisetzung": "",
+
+  "Grafik": "Die Anzeige enthält eine klassische, gedruckte Schrift in serifenbetonter Schriftart. Der Text ist zentral ausgerichtet und in einem typischen Stil für Traueranzeigen des frühen 20. Jahrhunderts gestaltet. Die Schrift ist schwarz auf hellem Hintergrund.",
+
+  "Hintergrund": "",
+
+  "Bemerkungen": "Die Anzeige enthält ein Zitat in Gedichtform, das den Verlust betont. Die Angabe 'Kanonier' deutet auf eine militärische Stellung im Ersten Weltkrieg hin. Der Ort 'westlicher Kriegsschauplatz' bezieht sich auf die Westfront des Ersten Weltkriegs."
+}
+````
 
