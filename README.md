@@ -2,7 +2,9 @@
 
 Dieses Projekt wurde entwickelt, um eine große Menge an Sterbeanzeigen aus Zeitungsanzeigen für die genealogische Forschung automatisiert zu transkribieren.
 
-Das Programm selbst wurde mit Hilfe von verschiedenen KI-Chatbots entwickelt und anschließend im Detail manuell minimal angepasst. Den Prompt für die Programmgenerierung findet man unter generate_program.md.
+![Logo](logo.png)
+
+Das Programm selbst wurde mit Hilfe von verschiedenen KI-Chatbots entwickelt und anschließend im Detail manuell minimal angepasst. Den Prompt für die Programmgenerierung findet man unter [generate_program.md](prompts/generate_program.md).
 
 ## Es erfüllt dabei folgende Grundfunktionen:
 
@@ -15,7 +17,7 @@ Das Programm selbst wurde mit Hilfe von verschiedenen KI-Chatbots entwickelt und
 7. Der Status sowie die Dauer der Verarbeitung des Bildes wird zusätzlich in einer CSV-Datei im Projektordner erfasst.
 
 
-## Vorausstzungen
+## Voraussetzungen
 
 Das Programm wurde unter Ubuntu Linux 22.04 LTS entwickelt. Man benötigt eine aktuelle Python Umgebung mit **pip** und virtuellem Environment **venv**. Diese kann mit
 
