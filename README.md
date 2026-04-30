@@ -1,6 +1,6 @@
 # Ollama Image Transcriptor
 
-Dieses Projekt wurde entwickelt, um eine große Menge an Sterbeanzeigen aus Zeitungsanzeigen für die genealogische Forschung automatisiert zu transkribieren.
+Dieses Projekt wurde entwickelt, um eine große Menge an Traueranzeigen aus Zeitungen für die genealogische Forschung automatisiert zu transkribieren.
 
 ![Logo](logo.png)
 
@@ -19,7 +19,7 @@ Das Programm selbst wurde mit Hilfe von verschiedenen KI-Chatbots entwickelt und
 
 ## 1. Voraussetzungen für das Python Programm
 
-Das Programm wurde unter Ubuntu Linux 22.04 LTS entwickelt. Man benötigt eine aktuelle Python Umgebung mit **pip** und virtuellem Environment **venv**. Diese kann mit
+Das Programm wurde unter Ubuntu Linux 24.04 LTS entwickelt. Man benötigt eine aktuelle Python Umgebung mit **pip** und virtuellem Environment **venv**. Diese kann mit
 
 ```bash
 sudo apt install python3-pip python3-venv
@@ -41,9 +41,9 @@ Damit ist das Python Programm einsatzbereit und kann mit
 ```bash
 python3 transcriptor.py
 ```
-gestartet werden. Diese Schritte können jederzeit auch auf Windows oder Mac Systemen vollzogen werden. Entsprechende Anleitungen finden sich im Internet. Der Transkriptor benötigt selbst keine Softwareabhängigkeiten zu einer KI-Installation, das er nur die Rest-Request an die KI-Umgebung weiterleitet. 
+gestartet werden. Diese Schritte können jederzeit auch auf Windows oder Mac Systemen vollzogen werden. Entsprechende Anleitungen finden sich im Internet. Der Transkriptor benötigt selbst keine Softwareabhängigkeiten zu einer KI-Installation, da er nur die Rest-Requests an die KI-Umgebung weiterleitet. 
 
-Standardmäßig verbindet er sich jedoch mit einem lokal laufendne Ollama System unter http://localhost:11434. 
+Standardmäßig verbindet er sich jedoch mit einem lokal laufenden Ollama System unter http://localhost:11434. 
 Man kann über die Umgebungsvariable 'OLLAMA_SERVER' jederzeit einen externen ollama Server einbinden. Zum Beispiel:
 ```bash
 export OLLAMA_SERVER="http://mein-ki-server.somewhere.com:11434"
@@ -51,11 +51,11 @@ export OLLAMA_SERVER="http://mein-ki-server.somewhere.com:11434"
 
 ### Einrichten und Start des Ollama KI-Servers
 
-Es gibt verschiedene Methoden einen Ollama Server lokal oder auf einem dedizierten Rechner zu installieren und zu starten. Die Umgebung sollte jedoch auf eine KI-fähige GPU mit 16GB VRAM zugreifen können. Verschiedene Methoden und Alternativen findet sich in der Dokumentation auf der [Ollama Homepage](https://docs.ollama.com/).
+Es gibt verschiedene Methoden einen Ollama Server lokal oder auf einem dedizierten Rechner zu installieren und zu starten. Die Umgebung sollte jedoch auf eine KI-fähige GPU mit 16GB VRAM zugreifen können. Verschiedene Methoden und Alternativen finden sich in der Dokumentation auf der [Ollama Homepage](https://docs.ollama.com/).
 
-Ich verwnede einen lokalen Ollama Server in einem Docker-Container. Die Docker-Host-Umgebung wurde mit einer Umgebung für den Betrieb mit einer NVIDIA RTX4080 Grafikkarte konvektioniert und getestet. Ist diese Umgebung fehlerfrei eingerichtet kann der Ollama Server lokal einfach über die [docker-compose.yml](docker-compose.yml) Datei gestartet werden:
+Ich verwende einen lokalen Ollama Server in einem Docker-Container. Die Docker-Host-Umgebung wurde mit einer Umgebung für den Betrieb mit einer NVIDIA RTX4080 Grafikkarte konvektioniert und getestet. Ist diese Umgebung fehlerfrei eingerichtet kann der Ollama Server lokal einfach über die [docker-compose.yml](docker-compose.yml) Datei gestartet werden:
 
-* Laden des Docker Images: 
+* Laden oder Aktualisieren des Docker Images: 
   ```bash 
   sudo docker compose pull
   ```
@@ -86,7 +86,7 @@ curl http://localhost:11434/api/generate -d '{
 }'
 ```
 
-Statt **ministra-3:14b** können auch andere Modelle verwendet werden. Eine Auswahl möglicher Modelle ist im [Ollama Repository](https://ollama.com/search) einsehbar. Für die Transkriptionsaufgabe sollten die Modelle jedoch idealerweise
+Statt **ministral-3:14b** können auch andere Modelle verwendet werden. Eine Auswahl möglicher Modelle ist im [Ollama Repository](https://ollama.com/search) einsehbar. Für die Transkriptionsaufgabe sollten die Modelle jedoch idealerweise
 
 * einen Kontext von **256k** Token verarbeiten können
 * und **visionfähig** sein.
@@ -98,7 +98,7 @@ Solche Modelle wären auch aus den Serien
 * [gemma4](https://ollama.com/library/gemma4)
 * ... und alle neueren Vision-Modelle
 
-einsetzbar. Je größer die Modelle sind umso bessere Ergebnisse sind zu erwarten. Sie sollten nur zur verfügbaren GPU-Kapazität der KI-Hardware / Grafikkarte passen. 
+einsetzbar. Je größer die Modelle sind, umso bessere Ergebnisse sind zu erwarten. Sie sollten nur zur verfügbaren GPU-Kapazität der KI-Hardware / Grafikkarte passen. 
 
 Die Transkriptionsqualität ist extrem stark abhängig vom Prompt und dem eingesetzten KI-Modell und natürlich der Bildqualität. Alle Bedingungen müssen fein aufeinander abgestimmt werden. Zu große Bilddateien werden allerdings das mögliche Kontextfenster überschreiten. Der Text im Bild sollte für das Modell gut lesbar sein. Moderne Schirften werden besser erkannt als sehr alte. Handschriften wurden bisher gar nicht berücksichtigt oder getestet.
 
@@ -106,11 +106,11 @@ Die Transkriptionsqualität ist extrem stark abhängig vom Prompt und dem einges
 
 ## Beispiel für eine Transkription:
 
-die Traueranzeige des Ludwig Draschba
+Die Traueranzeige des Ludwig Draschba
 
-![bild](Input/draschba_0001.jpg) 
+![Traueranzeige](Input/draschba_0001.jpg) 
 
- wird trotz sehr mangelhafter Bildqualität und eigentlich zu kleiner Bildgröße wie folgt transkribiert. Bemerkenswert ist dabei, dass das Sterbedatum und Sterbeort direkt aus dem Text interpretiert wird.
+ wird trotz sehr mangelhafter und grenzwertiger Bildqualität und zu kleiner Bildgröße wie folgt transkribiert. Bemerkenswert ist dabei, dass das Sterbedatum und der Sterbeort direkt aus dem Text interpretiert werden. Die Dauer für die Transkription beträgt auf der NVidia RTX4080 GPU Hardware 6.86 Sekunden.
 
 ````json
 {
