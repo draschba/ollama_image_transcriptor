@@ -103,13 +103,13 @@ einsetzbar. Je größer die Modelle sind umso bessere Ergebnisse sind zu erwarte
 Die Transkriptionsqualität ist extrem stark abhängig vom Prompt und dem eingesetzten KI-Modell und natürlich der Bildqualität. Alle Bedingungen müssen fein aufeinander abgestimmt werden. Zu große Bilddateien werden allerdings das mögliche Kontextfenster überschreiten. Der Text im Bild sollte für das Modell gut lesbar sein. Moderne Schirften werden besser erkannt als sehr alte. Handschriften wurden bisher gar nicht berücksichtigt oder getestet.
 
 
-## Beispiel für einee Transkription:
+## Beispiel für eine Transkription:
 
-die Traueranzeige
+die Traueranzeige des Ludwig Draschba
 
 ![bild](Input/draschba_0001.jpg) 
 
- wird trotz sehr mangelhafter Bildqualität wie folgt transkribiert. Bemerkenswert ist dabei, dass das Sterbedatum konkret aus dem Text interpretiert wird.
+ wird trotz sehr mangelhafter Bildqualität und eigentlich zu kleiner Bildgröße trotzdem wie folgt korrekt transkribiert. Bemerkenswert ist dabei, dass das Sterbedatum und Sterbeort direkt aus dem Text interpretiert wird.
 
 ````json
 {
