@@ -110,7 +110,7 @@ die Traueranzeige des Ludwig Draschba
 
 ![bild](Input/draschba_0001.jpg) 
 
- wird trotz sehr mangelhafter Bildqualität und eigentlich zu kleiner Bildgröße trotzdem wie folgt korrekt transkribiert. Bemerkenswert ist dabei, dass das Sterbedatum und Sterbeort direkt aus dem Text interpretiert wird.
+ wird trotz sehr mangelhafter Bildqualität und eigentlich zu kleiner Bildgröße wie folgt transkribiert. Bemerkenswert ist dabei, dass das Sterbedatum und Sterbeort direkt aus dem Text interpretiert wird.
 
 ````json
 {
