@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo docker -it exec ollama ollama ${1}
+sudo docker exec -it ollama ollama ${1}

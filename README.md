@@ -53,7 +53,7 @@ export OLLAMA_SERVER="http://mein-ki-server.somewhere.com:11434"
 
 Es gibt verschiedene Methoden einen Ollama Server lokal oder auf einem dedizierten Rechner zu installieren und zu starten. Die Umgebung sollte jedoch auf eine KI-fähige GPU mit 16GB VRAM zugreifen können. Verschiedene Methoden und Alternativen findet sich in der Dokumentation auf der [Ollama Homepage](https://docs.ollama.com/).
 
-Ich verwnede einen lokalen Ollama Server in einem Docker-Container. Die Docker Host Umgebung wurde mit einer NVIDIA Umgebung für den Betrieb mit einer NVIDIA RTX4080 Grafikkarte konvektioniert. Ist diese Umgebung fehlerfrei eingerichtet kann der Ollama Serve rlokal einfach über die [docker-compose.yml](docker-compose.yml) Datei gestartet werden:
+Ich verwnede einen lokalen Ollama Server in einem Docker-Container. Die Docker-Host-Umgebung wurde mit einer Umgebung für den Betrieb mit einer NVIDIA RTX4080 Grafikkarte konvektioniert und getestet. Ist diese Umgebung fehlerfrei eingerichtet kann der Ollama Server lokal einfach über die [docker-compose.yml](docker-compose.yml) Datei gestartet werden:
 
 * Laden des Docker Images: 
   ```bash 
@@ -64,15 +64,24 @@ Ich verwnede einen lokalen Ollama Server in einem Docker-Container. Die Docker H
   sudo docker compose up -d
   ```
 
-### KI Model ministral-3:154b 
+### KI-Modell *'ministral-3:14b'* laden und testen:
 
-Der Transkriptor verwendet das Modell [ministral-3:14b](https://ollama.com/library/ministral-3) um die Bilddateien zu transkribieren. Dieses Modell kann jederzeit im Quellcode gegen ein anderes ausgetauscht werden. Das KI-Modell muss allerdings auf den Ollama-Server geladen werden. Hierfü liegt im Projektordner ein [Shell-Script](ollama.sh) bereit:
+Der Transkriptor verwendet das Modell [ministral-3:14b](https://ollama.com/library/ministral-3) um die Bilddateien zu transkribieren und di eDaten zu generieren. Dieses Modell kann jederzeit im Quellcode gegen ein anderes ausgetauscht werden. Das zu verwendende KI-Modell muss allerdings auf den Ollama-Server geladen werden. Hierfür liegt im Projektordner ein [Shell-Script](ollama.sh) bereit:
 
 ```bash
 ./ollama.sh pull ministral-3:14b
 ```
-die verfügbaren Modelle kann man jederzeit anziegen lassen:
+die verfügbaren KI-Modelle des Ollama-Servers kann man jederzeit anzeigen lassen:
 ```bash
 ./ollama.sh list
 ```
 
+Ob der Ollama Server fehlerfrei läuft und auf die Rest-API regiert kann mit einer einfachen KI-chat anfrage getestet werden:
+
+```bash
+curl http://localhost:11434/api/generate -d '{
+  "model": "ministral-3:14b",
+  "prompt": "Warum ist der Himmel blau?",
+  "stream": false
+}'
+```
